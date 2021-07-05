@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Ad;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AdSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        User::factory(10)->create();
+        Ad::factory(10)->create();
     }
 }
