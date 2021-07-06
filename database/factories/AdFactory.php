@@ -21,6 +21,11 @@ class AdFactory extends Factory
      */
     public function definition()
     {
+        $image = '';
+        $result = json_decode(file_get_contents('https://dog.ceo/api/breeds/image/random'));
+        if ($result->status === 'success') {
+            $image = $result->message;
+        }
         return [
             'title' => $this->faker->text(50),
             'description' => $this->faker->text(),
@@ -30,7 +35,8 @@ class AdFactory extends Factory
             'latitude' => $this->faker->latitude,
             'longitude' => $this->faker->longitude,
             'city' => $this->faker->city,
-            'zip_code' => $this->faker->postcode
+            'zip_code' => $this->faker->postcode,
+            'main_image' => $image
         ];
     }
 }

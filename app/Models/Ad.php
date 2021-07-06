@@ -30,4 +30,16 @@ class Ad extends Model
     }
 
     protected $guarded = [];
+
+    public function getNormalizedDogAgeAttribute()
+    {
+        $years = round($this->dog_age / 12);
+        $months = $this->dog_age % 12;
+
+        if ($years > 0) {
+            return $years . ' anni';
+        }
+
+        return $months . ' mesi';
+    }
 }

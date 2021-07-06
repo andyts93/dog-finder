@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Ad;
 use Illuminate\Database\Seeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class AdSeeder extends Seeder
      */
     public function run()
     {
-        Ad::factory(10)->create();
+        Ad::factory(100)->create();
     }
 }
