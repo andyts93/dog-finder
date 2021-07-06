@@ -62,9 +62,9 @@ class AdController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show(Ad $annunci)
     {
-        //
+        return view('ads.show', ['ad' => $annunci]);
     }
 
     /**

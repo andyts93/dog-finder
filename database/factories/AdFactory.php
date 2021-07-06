@@ -28,7 +28,7 @@ class AdFactory extends Factory
         }
         return [
             'title' => $this->faker->text(50),
-            'description' => $this->faker->text(),
+            'description' => $this->faker->paragraphs(rand(3, 10), true),
             'dog_name' => $this->faker->firstName,
             'dog_age' => $this->faker->randomNumber(2),
             'dog_breeds' => [],

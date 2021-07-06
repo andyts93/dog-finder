@@ -1556,9 +1556,9 @@ return InfiniteScroll;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*****************************!*\
-  !*** ./resources/js/ads.js ***!
-  \*****************************/
+/*!***********************************!*\
+  !*** ./resources/js/ads/index.js ***!
+  \***********************************/
 var InfiniteScroll = __webpack_require__(/*! infinite-scroll */ "./node_modules/infinite-scroll/js/index.js");
 
 var infScroll = new InfiniteScroll('.ads-container', {

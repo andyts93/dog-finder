@@ -21,6 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/ad', \App\Http\Controllers\AdController::class);
+Route::resource('/annunci', \App\Http\Controllers\AdController::class)->names('ads');
 
 require __DIR__.'/auth.php';

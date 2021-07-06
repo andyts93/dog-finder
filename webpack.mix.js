@@ -11,10 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+// mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+//     require('postcss-import'),
+//     require('tailwindcss'),
+//     require('autoprefixer'),
+// ]);
 
-mix.js('resources/js/ads.js', 'public/js');
+mix.js('resources/js/app.js', 'public/js');
+
+mix.sass('resources/sass/app.scss', 'public/css')
+    .options({
+        postCss: [
+            require('postcss-import'),
+            require('tailwindcss'),
+            require('autoprefixer')
+        ]
+    })
+    .sass('resources/sass/ads/show.scss', 'public/css/announce');
+
+mix.js('resources/js/ads/index.js', 'public/js/announce')
+    .js('resources/js/ads/show.js', 'public/js/announce');

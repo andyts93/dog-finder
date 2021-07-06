@@ -1,9 +1,10 @@
 @push('scripts')
-    <script src="{{ mix('js/ads.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/announce/index.js') }}" type="text/javascript"></script>
 @endpush
 <x-app-layout>
     <div class="grid grid-cols-4 gap-4 max-w-7xl mx-auto lg:px-8 px-6 mt-2 ads-container">
         @foreach ($ads as $ad)
+        <a href="{{ route('ads.show', ['annunci' => $ad->slug]) }}">
         <div class="cursor-pointer transform duration-500 hover:-translate-y-1 ad-card-wrapper">
             <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                 <div class="bg-cover bg-center h-80 p-4" style="background-image: url({{ $ad->main_image }})">
@@ -38,14 +39,10 @@
                 </div>
             </div>
         </div>
+        </a>
         @endforeach
     </div>
     <div class="hidden">
         {{ $ads->links() }}
-    </div>
-    <div class="page-load-status">
-        <p class="infinite-scroll-request">Loading...</p>
-        <p class="infinite-scroll-last">End of content</p>
-        <p class="infinite-scroll-error">No more pages to load</p>
     </div>
 </x-app-layout>
