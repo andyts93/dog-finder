@@ -27,16 +27,12 @@ class AdFactory extends Factory
             $image = $result->message;
         }
         return [
-            'title' => $this->faker->text(50),
             'description' => $this->faker->paragraphs(rand(3, 10), true),
             'dog_name' => $this->faker->firstName,
             'dog_age' => $this->faker->randomNumber(2),
             'dog_breeds' => [],
-            'latitude' => $this->faker->latitude,
-            'longitude' => $this->faker->longitude,
-            'city' => $this->faker->city,
-            'zip_code' => $this->faker->postcode,
-            'main_image' => $image
+            'main_image' => $image,
+            'region_id' => rand(1,20)
         ];
     }
 }

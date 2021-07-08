@@ -2,10 +2,31 @@
     <script src="{{ mix('js/announce/index.js') }}" type="text/javascript"></script>
 @endpush
 <x-app-layout>
-    <div class="grid grid-cols-4 gap-4 max-w-7xl mx-auto lg:px-8 px-6 mt-2 ads-container">
+    <div class="max-w-5xl mx-auto mt-4 flex bg-white rounded-full shadow-xl items-center pr-2">
+        <select class="flex-auto rounded-full border-0 py-4 hover:bg-gray-100 hover:border-0 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-0 focus:bg-gray-100">
+            <option value="" disabled selected>Regione</option>
+            @foreach($regions as $region)
+                <option value="{{ $region->id }}">{{ $region->name }}</option>
+            @endforeach
+        </select>
+        <div class="border-r h-6"></div>
+        <input type="text" class="flex-auto rounded-full border-0 py-4 hover:bg-gray-100 hover:border-0 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-0 focus:bg-gray-100" placeholder="Razza">
+        <div class="border-r h-6"></div>
+        <select class="flex-auto rounded-full border-0 py-4 hover:bg-gray-100 hover:border-0 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-0 focus:bg-gray-100">
+            <option value="" disabled selected>Sesso</option>
+            <option value="m">Maschio</option>
+            <option value="f">Femmina</option>
+        </select>
+        <div class="border-r h-6"></div>
+        <input type="text" class="flex-auto rounded-full border-0 py-4 hover:bg-gray-100 hover:border-0 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-0 focus:bg-gray-100" placeholder="Età">
+        <button type="submit" class="bg-purple-500 rounded-full text-white p-2 w-12 h-12 flex items-center justify-center hover:bg-purple-400">
+            <i data-feather="search"></i>
+        </button>
+    </div>
+    <div class="grid grid-cols-4 gap-4 max-w-7xl mx-auto lg:px-8 px-6 mt-8 ads-container">
         @foreach ($ads as $ad)
-        <a href="{{ route('ads.show', ['annunci' => $ad->slug]) }}">
-        <div class="cursor-pointer transform duration-500 hover:-translate-y-1 ad-card-wrapper">
+        <a href="{{ route('ads.show', ['annunci' => $ad->slug]) }}" class="ad-card-wrapper">
+        <div class="cursor-pointer transform duration-500 hover:-translate-y-1">
             <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                 <div class="bg-cover bg-center h-80 p-4" style="background-image: url({{ $ad->main_image }})">
                     <div class="flex justify-end">
@@ -18,9 +39,16 @@
                 </div>
                 <div class="p-4 py-5">
                     <div class="flex justify-between">
-                        <div class="text-indigo-500 text-base font-semibold">{{ $ad->city }}</div>
+                        <div class="text-indigo-500 text-base font-semibold">{{ $ad->region->name }}</div>
                     </div>
-                    <h2 class="font-bold text-2xl">{{ $ad->dog_name }}</h2>
+                    <h2 class="font-bold text-2xl inline-flex items-center">
+                        {{ $ad->dog_name }}
+                        @if($ad->dog_gender === 'm')
+                        <svg class="h-6 w-6 ml-2 text-blue-500" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M9,9C10.29,9 11.5,9.41 12.47,10.11L17.58,5H13V3H21V11H19V6.41L13.89,11.5C14.59,12.5 15,13.7 15,15A6,6 0 0,1 9,21A6,6 0 0,1 3,15A6,6 0 0,1 9,9M9,11A4,4 0 0,0 5,15A4,4 0 0,0 9,19A4,4 0 0,0 13,15A4,4 0 0,0 9,11Z" />
+                        </svg>
+                        @endif
+                    </h2>
                 </div>
                 <div class="flex p-4 border-t border-gray-200 text-gray-700">
                     <div class="flex-1 inline-flex items-center">

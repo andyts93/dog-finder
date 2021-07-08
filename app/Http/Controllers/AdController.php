@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Region;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -19,8 +20,9 @@ class AdController extends Controller
     public function index()
     {
         $ads = Ad::latest()->paginate(12);
+        $regions = Region::all();
 
-        return view('ads.index', compact('ads'));
+        return view('ads.index', compact('ads', 'regions'));
     }
 
     /**

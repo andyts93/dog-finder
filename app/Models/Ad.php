@@ -18,7 +18,7 @@ class Ad extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom('dog_name')
             ->saveSlugsTo('slug')
             ->preventOverwrite()
             ->doNotGenerateSlugsOnUpdate();
@@ -41,5 +41,10 @@ class Ad extends Model
         }
 
         return $months . ' mesi';
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
     }
 }
